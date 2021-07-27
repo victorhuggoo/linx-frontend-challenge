@@ -1,5 +1,5 @@
-const api = async (url, onSuccess, onError) => {
-  await fetch(url)
+const api = (url, onSuccess, onError) => {
+  return fetch(url)
     .then(res => res.json())
     .then(data => onSuccess(data))
     .catch(err => onError(err))

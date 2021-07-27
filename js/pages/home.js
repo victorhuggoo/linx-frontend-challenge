@@ -4,18 +4,30 @@ import env from "../env.js"
 import { productList } from '../templates/index.js'
 
 const home = () => {
-  const fetchProducts = async () => {
-    await api(env.API_URL, renderProducts, (err) => console.log(err))
-  }
+  let apiUrl = env.API_URL 
+  const moreProductsBtn = document.getElementById('more-products-btn')
 
-  const renderProducts = (data) => {
-    const { products, nextPage } = data
+  const fetchProducts = async () => {
+    await api(apiUrl, onProductsFetched, (err) => console.log(err))
+  }
+  
+  const onProductsFetched = (data) => {
+    const { products, nextPage: page } = data
+    nextPage(page)
+    renderProducts(products)
+  }
+  
+  const nextPage = (page) => {
+    apiUrl = `https://${page}`
+  }
+  
+  const renderProducts = (products) => {
     const productListEl = document.getElementById('product-list')
-    
     productList({ items: products }).forEach(product => productListEl.appendChild(product))
   }
-
+  
   fetchProducts()
+  moreProductsBtn.addEventListener('click', fetchProducts)
 }
 
 export default home
