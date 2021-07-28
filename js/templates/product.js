@@ -24,7 +24,7 @@ const product = (props) => {
   const cardImage = img({ className: 'card-image', src: `http:${image}`, alt: `image-${name}` })
   const cardName = title({ className: 'card-name', productName: name})
   const cardDescription = p({ className: 'card-description', text: description, type: 'text' })
-  const cardOldPrice = p({ className: 'card-oldPrice', text: `Old Price: ${maskMoney(oldPrice)}`, type: 'text' })
+  const cardOldPrice = p({ className: 'card-oldPrice', text: `De: ${maskMoney(oldPrice)}`, type: 'text' })
   const cardPrice = p({ className: 'card-price', text: `por: ${maskMoney(price)}`, type: 'text' })
   const cardInstallments= p({ className: 'card-installments', text: `ou ${installmentsCount}x de ${maskMoney(installmentsValue)}`, type: 'text' })
   const cardButton = button({ className: '', title: 'Comprar' })
