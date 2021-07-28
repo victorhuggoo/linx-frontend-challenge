@@ -1,3 +1,10 @@
+/**
+ * This function is responsible for create a H4 element
+ * 
+ * @param {Object} props
+ * @returns {Element}
+ */
+
 const title = (props) => {
   const { className, productName } = props
   const h4 = document.createElement('h4')

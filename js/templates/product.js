@@ -1,5 +1,13 @@
+
 import { div, img, title, p, button} from '../components/index.js'
 import { maskMoney } from '../utils/index.js'
+
+/**
+ * This function is responsible for create a product card
+ * 
+ * @param {Object} props
+ * @returns {Element}
+ */
 
 const product = (props) => {
   const { 

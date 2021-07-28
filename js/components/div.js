@@ -1,3 +1,10 @@
+/**
+ * This function is responsible for create a div element
+ * 
+ * @param {Object} props
+ * @returns {Element}
+ */
+
 const div = (props) => {
   const { className, children } = props
   const element = document.createElement('div')

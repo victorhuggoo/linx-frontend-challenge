@@ -1,5 +1,12 @@
 import product from './product.js'
 
+/**
+ * This function is responsible for render product cards
+ * 
+ * @param {Object} props
+ * @returns {Array}
+ */
+
 const productList = (props) => {
   const { items } = props
 

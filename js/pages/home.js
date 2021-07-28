@@ -3,6 +3,10 @@ import env from "../env.js"
 
 import { productList } from '../templates/index.js'
 
+/**
+ * This function is responsible for render all products
+*/
+
 const home = () => {
   let apiUrl = env.API_URL 
   const moreProductsBtn = document.getElementById('more-products-btn')

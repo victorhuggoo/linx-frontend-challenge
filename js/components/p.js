@@ -1,3 +1,10 @@
+/**
+ * This function is responsible for create a P element
+ * 
+ * @param {Object} props
+ * @returns {Element}
+ */
+
 const p = (props) => {
   const { className, text, type } = props
   const element = document.createElement('p')
