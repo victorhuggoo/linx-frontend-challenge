@@ -20,10 +20,10 @@
       </h6>
       <div class="container md">
       <nav>
-      <a target="_blank" href="https://www.linx.com.br/">Conheça a Linx</a>
-      <a class="anchor-link" href="#contact">Ajude o algoritmo</a>
-      <a class="anchor-link" href="#products-section">Seus produtos</a>
-      <a class="anchor-link" href="#newsletter">Compartilhe</a>
+        <a target="_blank" href="https://www.linx.com.br/">Conheça a Linx</a>
+        <a class="anchor-link" href="#contact">Ajude o algoritmo</a>
+        <a class="anchor-link" href="#products-section">Seus produtos</a>
+        <a class="anchor-link" href="#newsletter">Compartilhe</a>
       </nav>
       </div>
     </div>
@@ -54,18 +54,18 @@
         </p>
       </div>
       <div class="item">
-        <form action="#">
+        <form id="formuser">
           <div class="form-item">
             <label for="name">Seu nome</label>
-            <input type="text" name="name" id="name" />
+            <input type="text"  name="name" id="name" />
           </div>
           <div class="form-item">
-            <label for="name">E-mail</label>
-            <input type="email" name="email" id="email" />
+            <label for="email">E-mail</label>
+            <input type="email" required name="email" id="email" />
           </div>
           <div class="form-item">
-            <label for="name">CPF</label>
-            <input type="text" name="cpf" id="cpf" />
+            <label for="cpf">CPF</label>
+            <input type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="mCPF(this, value)" maxlength="14" required name="cpf" id="cpf" />
           </div>
           <div class="form-check">
             <div class="radio">
@@ -78,7 +78,7 @@
             </div>
           </div>
           <div class="form-item">
-          <button class="send">Enviar</button>
+            <button class="send">Enviar</button>
           </div>
         </form>
       </div>
@@ -104,23 +104,25 @@
         Quer que seus amigos também ganhem a lista personalizada deles?
         Preecha agora!
       </p>
-      <div class="container md form-group">
-        <div class="item">
-          <div class="form-item">
-            <label for="friendName">Nome do seu amigo:</label>
-            <input type="text" name="friendName" id="friendName" />
+      <form id="friendform">
+        <div class="container md form-group">
+          <div class="item">
+            <div class="form-item">
+              <label for="friendName">Nome do seu amigo:</label>
+              <input required type="text" name="friendName" id="friendName" />
+            </div>
+          </div>
+          <div class="item">
+            <div class="form-item">
+              <label for="emailFriend">E-mail do seu amigo</label>
+              <input required type="email" name="emailFriend" id="emailFriend" />
+            </div>
           </div>
         </div>
-        <div class="item">
-          <div class="form-item">
-            <label for="emailFriend">E-mail do seu amigo</label>
-            <input type="email" name="emailFriend" id="emailFriend" />
-          </div>
+        <div class="align-center">
+          <button class="send">Enviar agora</button>
         </div>
-      </div>
-      <div class="align-center">
-        <button class="send">Enviar agora</button>
-      </div>
+      </form>
     </div>
   </section>
 
@@ -134,6 +136,12 @@
   </footer>
 </body>
 <script>
+  var formUser = document.getElementById('formuser')
+  formUser.addEventListener('submit', handleFormSubmit)
+
+  var formFriend = document.getElementById('friendform')
+  formFriend.addEventListener('submit', handleFormSubmit)
+
   const anchors = document.querySelectorAll('.anchor-link')
   anchors.forEach(el => el.addEventListener('click', scrollSmoth))
 
@@ -148,5 +156,20 @@
       behavior: 'smooth'
     })
   }
+
+  function mCPF(el, cpf){
+    cpf=cpf.replace(/\D/g,"")
+    cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+    cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+    cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+    el.value = cpf
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault()
+    alert('Email enviado com sucesso!')
+    e.target.reset()
+  }
+
 </script>
 </html>
